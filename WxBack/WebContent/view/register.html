@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>注册</title>
+
+		<meta name="description" content="User login page" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<!-- basic styles -->
+
+		<link href="${path}/resources/css/bootstrap.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="${path}/resources/css/font-awesome.min.css" />
+
+		<!--[if IE 7]>
+		  <link rel="stylesheet" href="${path}/resources/css/font-awesome-ie7.min.css" />
+		<![endif]-->
+
+		<!-- page specific plugin styles -->
+
+		<!-- fonts -->
+
+		<link rel="stylesheet" href="${path}/resources/css/ace-fonts.css" />
+
+		<!-- ace styles -->
+
+		<link rel="stylesheet" href="${path}/resources/css/ace.min.css" />
+		<link rel="stylesheet" href="${path}/resources/css/ace-rtl.min.css" />
+        <link rel="stylesheet" href="${path}/resources/css/usual.css" />
+		<!--[if lte IE 8]>
+		  <link rel="stylesheet" href="${path}/resources/css/ace-ie.min.css" />
+		<![endif]-->
+
+		<!-- inline styles related to this page -->
+
+		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+
+		<!--[if lt IE 9]>
+		<script src="${path}/resources/js/html5shiv.js"></script>
+		<script src="${path}/resources/js/respond.min.js"></script>
+		<![endif]-->
+	</head>
+
+	<body class="login-layout">
+		<div class="main-container">
+			<div class="main-content">
+				<div class="row">
+					<div class="col-sm-10 col-sm-offset-1">
+						<div class="login-container">
+							<div class="center">
+								<h1>
+									<i class="icon-leaf green"></i>
+									<span class="red">欢迎来到</span>
+									<span class="white">Vicky Home</span>
+								</h1>
+								<h4 class="blue">&copy;微奇之家 </h4>
+							</div>
+
+							<div class="space-6"></div>
+
+							<div class="position-relative">
+								<div class="signup-box visible widget-box no-border">
+									<div class="widget-body">
+										<div class="widget-main">
+											<h4 class="header green lighter bigger">
+												<i class="icon-group blue"></i>
+												New User Registration
+											</h4>
+
+											<div class="space-6"></div>
+											<p> Enter your details to begin: </p>
+
+											<form action="${path!}/user/saveUser" onsubmit="return submitCheck();" id="myForm" method="post">
+												<fieldset>
+													<label class="block clearfix">
+														<span class="block input-icon input-icon-right">
+															<input type="text" class="form-control" placeholder="请设置一个昵称" name="user.user_name" value="${user.user_name!}"/>
+															<i class="icon-user"></i>
+														</span>
+														<span class="errorTxt">${nameMsg!}</span>
+													</label>
+													
+													<label class="block clearfix">
+														<span class="block input-icon input-icon-right">
+															<input type="text" class="form-control" placeholder="请输入手机号" name="user.user_phone" value="${user.user_phone!}"/>
+															<i class="icon-user"></i>
+														</span>
+														<span class="errorTxt">${phoneMsg!}</span>
+													</label>
+													
+													<label class="block clearfix">
+														<span class="block input-icon input-icon-right">
+															<input type="text" class="form-control" placeholder="请输入您的邀请码" name="user.user_invite_code" value="${user.user_invite_code!}"/>
+															<i class="icon-leaf green"></i>
+														</span>
+														<span class="errorTxt">${codeMsg!}</span>
+													</label>
+
+													<label class="block clearfix">
+														<span class="block input-icon input-icon-right">
+															<input type="password" class="form-control" placeholder="请输入密码" name="user.user_pwd" value="${user.user_pwd!}"/>
+															<i class="icon-lock"></i>
+														</span>
+														<span class="errorTxt">${pwdMsg!}</span>
+													</label>
+
+													<label class="block clearfix">
+														<span class="block input-icon input-icon-right">
+															<input type="password" class="form-control" placeholder="再确认您的密码" name="pwd2" value="${pwd2!}"/>
+															<i class="icon-retweet"></i>
+														</span>
+														<span class="errorTxt">${pwd2Msg!}</span>
+													</label>
+													
+													<label class="block clearfix">
+														<span class="block input-icon input-icon-right">
+															<input type="text" class="input-sm" name="verifyCode" id="verifyCode" placeholder="输入验证码" 
+														  	   maxlength="5"  title="验证码不区分大小写!"
+															   onblur="if (this.value == '') {this.placeholder = '输入验证码';}"/>
+															<img src="${path!}/captcha/index" id="yzmImg" style="cursor: pointer;height: 30px;width: 43%">
+														</span>
+														<span class="errorTxt">${verifyMsg!}</span>
+													</label>
+
+													<label class="block">
+														<input type="checkbox" class="ace" checked="checked" onclick="if(this.checked){$('#next').removeAttr('disabled');}else{$('#next').attr('disabled','disabled');}" />
+														<span class="lbl">
+															我接受微奇之家的
+															<a href="#">用户协议</a>
+														</span>
+													</label>
+
+													<div class="space-24"></div>
+
+													<div class="clearfix">
+														<button type="reset" class="width-30 pull-left btn btn-sm">
+															<i class="icon-refresh"></i>
+															重置
+														</button>
+
+														<button type="submit" id="next" class="width-65 pull-right btn btn-sm btn-success">
+															注册
+															<i class="icon-arrow-right icon-on-right"></i>
+														</button>
+													</div>
+												</fieldset>
+											</form>
+										</div>
+
+										<div class="toolbar center">
+											<a href="${path!}/login/" class="back-to-login-link">
+												<i class="icon-arrow-left"></i>
+												回到登陆
+											</a>
+										</div>
+									</div><!-- /widget-body -->
+								</div><!-- /signup-box -->
+							</div><!-- /position-relative -->
+						</div>
+					</div><!-- /.col -->
+				</div><!-- /.row -->
+			</div>
+		</div><!-- /.main-container -->
+
+		<!-- basic scripts -->
+
+		<!--[if !IE]> -->
+
+		<script type="text/javascript">
+			window.jQuery || document.write("<script src='${path}/resources/js/jquery-2.0.3.min.js'>"+"<"+"/script>");
+		</script>
+
+		<!-- <![endif]-->
+
+		<!--[if IE]>
+		<script type="text/javascript">
+		 window.jQuery || document.write("<script src='${path}/resources/js/jquery-1.10.2.min.js'>"+"<"+"/script>");
+		</script>
+		<![endif]-->
+		
+		<script src="${path}/resources/js/usual.js"></script>
+        <script type="text/javascript">
+           function submitCheck(){
+        	    if(isNull($("input[name='user.user_name']").val())){
+        	    	$(".errorTxt").eq(0).html("请填写用户名!！");
+	           		$("input[name='user.user_name']").focus();
+	           		return false;
+	           	} 
+        	    $(".errorTxt").eq(0).html("");
+        	    if(isNull($("input[name='user.user_phone']").val())){
+        	    	$(".errorTxt").eq(1).html("请填写手机号码!");
+	           		$("input[name='user.user_phone']").focus();
+	           		return false;
+	           	} 
+        	    $(".errorTxt").eq(1).html("");
+        	    /* if(isNull($("input[name='user.user_invite_code']").val())){
+        	    	$(".errorTxt").eq(2).html("请输入推荐码!");
+	           		$("input[name='user.user_invite_code']").focus();
+	           		return false;
+	           	} 
+        	    $(".errorTxt").eq(2).html(""); */
+	           	if(isNull($("input[name='user.user_pwd']").val())){
+	           		$(".errorTxt").eq(3).html("请再输入密码!");
+	           		$("input[name='user.user_pwd']").focus();
+	           		return false;
+	           	} 
+	           	$(".errorTxt").eq(3).html("");
+	           	if(isNull($("input[name='pwd2']").val())){
+	           		$(".errorTxt").eq(4).html("请再输入一次密码!");
+	           		$("input[name='pwd2']").focus();
+	           		return false;
+	           	}
+	           	$(".errorTxt").eq(4).html("");
+	           	if($("input[name='pwd2']").val() != $("input[name='user.user_pwd']").val()){
+	           		$(".errorTxt").eq(4).html("两次密码输入不一致！");
+	           		$("input[name='pwd2']").focus();
+	           		return false;
+	           	}
+	           	$(".errorTxt").eq(4).html("");
+	           	if(isNull($("input[name='verifyCode']").val())){
+	           		$(".errorTxt").eq(5).html("请输入验证码!");
+	           		$("input[name='verifyCode']").focus();
+	           		return false;
+	           	} 
+	           	$(".errorTxt").eq(5).html("");
+	           	return true;
+           }
+        </script>
+	</body>
+</html>

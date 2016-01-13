@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>登录 </title>
+
+		<meta name="description" content="User login page" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<!-- basic styles -->
+
+		<link href="${path}/resources/css/bootstrap.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="${path}/resources/css/font-awesome.min.css" />
+
+		<!--[if IE 7]>
+		  <link rel="stylesheet" href="${path}/resources/css/font-awesome-ie7.min.css" />
+		<![endif]-->
+
+		<!-- page specific plugin styles -->
+
+		<!-- fonts -->
+
+		<link rel="stylesheet" href="${path}/resources/css/ace-fonts.css" />
+
+		<!-- ace styles -->
+
+		<link rel="stylesheet" href="${path}/resources/css/ace.min.css" />
+		<link rel="stylesheet" href="${path}/resources/css/ace-rtl.min.css" />
+
+		<!--[if lte IE 8]>
+		  <link rel="stylesheet" href="${path}/resources/css/ace-ie.min.css" />
+		<![endif]-->
+
+		<!-- inline styles related to this page -->
+
+		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+
+		<!--[if lt IE 9]>
+		<script src="${path}/resources/js/html5shiv.js"></script>
+		<script src="${path}/resources/js/respond.min.js"></script>
+		<![endif]-->
+	</head>
+
+	<body class="login-layout">
+		<div class="main-container">
+			<div class="main-content">
+				<div class="row">
+					<div class="col-sm-10 col-sm-offset-1">
+						<div class="login-container">
+							<div class="center">
+								<h1>
+									<i class="icon-leaf green"></i>
+									<span class="red">欢迎来到</span>
+									<span class="white">Vicky Home</span>
+								</h1>
+								<h4 class="blue">&copy;微奇之家 </h4>
+							</div>
+
+							<div class="space-6"></div>
+
+							<div class="position-relative">
+								<div id="login-box" class="login-box visible widget-box no-border">
+									<div class="widget-body">
+										<div class="widget-main">
+											<h4 class="header blue lighter bigger">
+												<i class="icon-coffee green"></i>
+												请输入登陆信息
+											</h4>
+
+											<div class="space-6"></div>
+
+											<form action="${path!}/login/login" onsubmit="return submitCheck();" id="myForm" method="post">
+												<fieldset>
+													<label class="block clearfix">
+														<span class="block input-icon input-icon-right">
+															<input type="text" class="form-control" placeholder="用户名/手机号码" name="user_name"/>
+															<i class="icon-user"></i>
+														</span>
+														${nameMsg!}
+													</label>
+
+													<label class="block clearfix">
+														<span class="block input-icon input-icon-right">
+															<input type="password" class="form-control" placeholder="密码" name="user_pwd"/>
+															<i class="icon-lock"></i>
+														</span>
+														${pwdMsg!}
+													</label>
+                                                    <label class="block clearfix">
+														<span class="block input-icon input-icon-right">
+															<input type="text" class="input-sm" name="verifyCode" id="verifyCode" placeholder="输入验证码" 
+														  	   maxlength="5"  title="验证码不区分大小写!"
+															   onblur="if (this.value == '') {this.placeholder = '输入验证码';}"/>
+															<img src="${path!}/captcha/index" id="yzmImg" style="cursor: pointer;height: 30px;width: 43%">
+														</span>
+														${verifyMsg!}
+													</label>
+													<div class="space"></div>
+
+													<div class="clearfix">
+														<label class="inline">
+															<input type="checkbox" class="ace" name="rememberMe"/>
+															<span class="lbl"> 记住我</span>
+														</label>
+
+														<button type="submit" class="width-35 pull-right btn btn-sm btn-primary">
+															<i class="icon-key"></i>
+															登陆
+														</button>
+													</div>
+
+													<div class="space-4"></div>
+												</fieldset>
+											</form>
+
+											
+										</div><!-- /widget-main -->
+
+										<div class="toolbar clearfix">
+											<div>
+												<a href="${path!}/login/forgotPWD" class="forgot-password-link">
+													<i class="icon-arrow-left"></i>
+													忘记密码
+												</a>
+											</div>
+
+											<div>
+												<a href="${path!}/login/register" class="user-signup-link">
+													注册
+													<i class="icon-arrow-right"></i>
+												</a>
+											</div>
+										</div>
+									</div><!-- /widget-body -->
+								</div><!-- /login-box -->
+
+							</div><!-- /position-relative -->
+						</div>
+					</div><!-- /.col -->
+				</div><!-- /.row -->
+			</div>
+		</div><!-- /.main-container -->
+
+		<!-- basic scripts -->
+
+		<!--[if !IE]> -->
+
+		<script type="text/javascript">
+			window.jQuery || document.write("<script src='${path}/resources/js/jquery-2.0.3.min.js'>"+"<"+"/script>");
+		</script>
+
+		<!-- <![endif]-->
+
+	<!--[if IE]>
+	<script type="text/javascript">
+	 window.jQuery || document.write("<script src='${path}/resources/js/jquery-1.10.2.min.js'>"+"<"+"/script>");
+	</script>
+	<![endif]-->
+    <script src="${path}/resources/js/usual.js"></script>
+    <script type="text/javascript">
+    function submitCheck(){
+    	if(isNull($("input[name='user_name']").val())){
+    		$("input[name='user_name']").focus();
+    		return false;
+    	} 
+    	if(isNull($("input[name='user_pwd']").val())){
+    		$("input[name='user_pwd']").focus();
+    		return false;
+    	} 
+    	if(isNull($("input[name='verifyCode']").val())){
+    		$("input[name='verifyCode']").focus();
+    		return false;
+    	} 
+    	return true;
+    }
+    </script>
+	</body>
+</html>

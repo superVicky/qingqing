@@ -1,0 +1,8 @@
+eclipse.preferences.version=1
+encoding//src/a_little_config.txt=UTF-8
+encoding//src/beetl.properties=UTF-8
+encoding//src/com/vicky/config/InitConfig.java=UTF-8
+encoding//src/com/vicky/interceptor/AuthInterceptor.java=UTF-8
+encoding//src/com/vicky/utils/CaptchaController.java=UTF-8
+encoding//src/com/vicky/utils/MD5Util.java=UTF-8
+encoding//src/com/vicky/utils/MyCaptchaRender.java=UTF-8
